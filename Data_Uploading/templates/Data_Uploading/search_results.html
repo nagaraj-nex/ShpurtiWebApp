@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}
+</style>
+</head>
+<body>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form method ="get" action="search"class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<h2>Search results : </h2>
+    {% if allPosts|length < 1 %}
+   <p>No search results</p>
+    Your search query : <b>{{query}}</b> did not match any documents. <br>
+    Suggestions:
+    <ul>
+    <li>Make sure that all words are spelled correctly.</li>
+    <li>Try more general keywords.</li>
+   <li> Try fewer keywords.</li>
+   <li> Try different keywords.</li>
+    </li>
+    </ul>
+
+
+    {% endif %}
+<p>ONLINE DATA MANAGEMENT</p>
+<table style="width:100%">
+    <tr>  
+        <th>Company id</th>  
+        <th>Company_Name</th>    
+        <th>Website</th>  
+        <th>Employee_Range</th>  
+        <th>Industry</th>
+        <th>Address_1</th>
+        <th>Address_2</th>
+        <th>City</th>
+        <th>Zip_Code</th>
+        <th>Country</th>
+        <th>First_Name</th>
+        <th>Last_Name</th>
+        <th>Job_Title</th>
+        <th>LinkedIn_URL</th>
+        <th>Public_Profile</th>
+        <th>Email_Id</th>
+        <th>Contact_Num</th>
+        <th>Job_Url</th>
+        <th>Job_Opening</th>
+        <th>Actions</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for Data in allPosts %}  
+    <tr>  
+        <td>{{ cid }}</td>  
+        <td>{{ Data.Company_Name }}</td>  
+        <td>{{ Data.Website }}</td>  
+        <td>{{ Data.Employee_Range }}</td>
+        <td>{{ Data.Industry }}</td>
+        <td>{{ Data.Address_1 }}</td>
+        <td>{{ Data.Address_2 }}</td>
+        <td>{{ Data.City }}</td>
+        <td>{{ Data.Zip_Code }}</td>
+        <td>{{ Data.Country }}</td>
+        <td>{{ Data.First_Name }}</td>
+        <td>{{ Data.Last_Name }}</td>
+        <td>{{ Data.Job_Title }}</td>
+        <td>{{ Data.LinkedIn_URL }}</td>
+        <td>{{ Data.Public_Profile }}</td>
+        <td>{{ Data.Email_Id }}</td>
+        <td>{{ Data.Contact_Num }}</td>
+        <td>{{ Data.Job_Url }}</td>
+        <td>{{ Data.Job_Opening }}</td>
+        <td>  
+            <a href="/edit/{{ Data.cid }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/delete/{{ Data.cid }}">Delete</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/company" class="btn btn-primary">Add New Record</a></center>  
+</body>  
+</html>  

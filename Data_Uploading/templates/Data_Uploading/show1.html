@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags--> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
+    <title>{% block title%} {% endblock %}</title>
+     <style>
+       {% block css %} {% endblock %}
+  </style>
+  {% load static %} 
+  <script src="{% static '/js/javascript.js' %}" type="text/javascript"></script> 
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <I><a class="navbar-brand" href="#">SPHURTI WEB APP</a></I>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link" href="#">ONLINE DATA MANAGEMENT<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="csv">Download<span class="sr-only">(current)</span></a>
+      </li>
+      </ul>
+    <form method ="get" action="search"class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+       <!--<a href="csv" download>Click Here To Download The File</a>-->
+    </form>
+</button>
+  </div>
+</nav>
+  {% block body %} {% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    {% block js %}
+    {% endblock %}
+  </body>
+  <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}
+</style>
+</head>
+<body>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!--<form method ="get" action="search"class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+       <a href="csv" download>Click Here To Download The File</a>
+    </form>-->
+  </div>
+</nav>
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <tr class="filters">  
+        <th class="th-sm">Company id</th>  
+        <th class="th-sm">Company_Name<form method ="get" action="search"class="form-inline my-2 my-lg-0"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></th></form>    
+        <th class="th-sm">Website<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query"></th> 
+        <th class="th-sm">Employee_Range<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query"></th>  
+        <th class="th-sm">Industry<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query"></th>
+        <th class="th-sm">Address_1</th>
+        <th class="th-sm">Address_2</th>
+        <th class="th-sm">City</th>
+        <th class="th-sm">Zip_Code</th>
+        <th class="th-sm">Country<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query"></th>
+        <th class="th-sm">First_Name</th>
+        <th class="th-sm">Last_Name</th>
+        <th class="th-sm">Job_Title</th>
+        <th class="th-sm">LinkedIn_URL</th>
+        <th class="th-sm">Public_Profile</th>
+        <th class="th-sm">Email_Id</th>
+        <th class="th-sm">Contact_Num</th>
+        <th class="th-sm">Job_Url</th>
+        <th class="th-sm">Job_Opening</th>
+        <th class="th-sm">Actions</th>  
+    </tr>  
+    </thead>  
+    <tbody>
+      
+{% for Data in Data %}  
+    <tr>  
+        <td>{{ cid }}</td>  
+        <td>{{ Data.Company_Name }}</td>  
+        <td>{{ Data.Website }}</td>  
+        <td>{{ Data.Employee_Range }}</td>
+        <td>{{ Data.Industry }}</td>
+        <td>{{ Data.Address_1 }}</td>
+        <td>{{ Data.Address_2 }}</td>
+        <td>{{ Data.City }}</td>
+        <td>{{ Data.Zip_Code }}</td>
+        <td>{{ Data.Country }}</td>
+        <td>{{ Data.First_Name }}</td>
+        <td>{{ Data.Last_Name }}</td>
+        <td>{{ Data.Job_Title }}</td>
+        <td>{{ Data.LinkedIn_URL }}</td>
+        <td>{{ Data.Public_Profile }}</td>
+        <td>{{ Data.Email_Id }}</td>
+        <td>{{ Data.Contact_Num }}</td>
+        <td>{{ Data.Job_Url }}</td>
+        <td>{{ Data.Job_Opening }}</td>
+        <td>  
+            <a href="/edit/{{ Data.cid }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/delete/{{ Data.cid }}">Delete</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/company" class="btn btn-primary">Add New Record</a></center>
+</body>
+</html>

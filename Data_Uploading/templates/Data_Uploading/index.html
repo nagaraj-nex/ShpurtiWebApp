@@ -1,0 +1,143 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Comapany Data</title>  
+    {% load staticfiles %}  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+</head>  
+<body>  
+<form method="POST" class="post-form" action="/company">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Enter Comapany Details</h3>  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Company_ID:</label>  
+    <div class="col-sm-4">  
+      {{ form.cid }}  
+    </div>  
+  </div>  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Comapny Name:</label>  
+    <div class="col-sm-4">  
+      {{ form.Company_Name }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Website:</label>  
+    <div class="col-sm-4">  
+      {{ form.Website }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Employee_Range:</label> 
+    <div class="col-sm-4">  
+      {{ form.Employee_Range }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Industry:</label> 
+    <div class="col-sm-4">  
+      {{ form.Industry }}  
+    </div>  
+  </div> 
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label"> Address_1:</label>
+    <div class="col-sm-4">  
+      {{ form.Address_1 }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label"> Address_2:</label>
+    <div class="col-sm-4">  
+      {{ form.Address_2 }}  
+    </div>  
+  </div>   
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">City:</label>
+    <div class="col-sm-4">  
+      {{ form.City }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Zip_Code</label>
+    <div class="col-sm-4">  
+      {{ form.Zip_Code }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Country:</label>
+    <div class="col-sm-4">  
+      {{ form.Country }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">First_Name:</label>
+    <div class="col-sm-4">  
+      {{ form.First_Name }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Last_Name:</label>
+    <div class="col-sm-4">  
+      {{ form.Last_Name }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Job_Title:</label>
+    <div class="col-sm-4">  
+      {{ form.Job_Title }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">LinkedIn_URL:</label>
+    <div class="col-sm-4">  
+      {{ form.LinkedIn_URL }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Public_Profile:</label>
+    <div class="col-sm-4">  
+      {{ form.Public_Profile }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Email_Id:</label>
+    <div class="col-sm-4">  
+      {{ form.Email_Id }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Contact_Num:</label>
+    <div class="col-sm-4">  
+      {{ form.Contact_Num }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Job_Url:</label>
+    <div class="col-sm-4">  
+      {{ form.Job_Url }}  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Job_Opening:</label>
+    <div class="col-sm-4">  
+      {{ form.Job_Opening }}  
+    </div>  
+  </div>
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-primary">Submit</button>  
+    </div>  
+  </div>  
+    </div>  
+</form>  
+</body>  
+</html>
