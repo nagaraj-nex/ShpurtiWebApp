@@ -774,6 +774,7 @@
 				for(var row = 0; row < bodyCells.length; row++) {
 					if(bodyCells[row][col].parentNode.style.display !== 'none') { //tr
 						var text = getStaticText(bodyCells[row][col]);
+						console.log(text)
 						rowsVisible[row] = filter(text);
 					}
 				}

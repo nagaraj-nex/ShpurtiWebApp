@@ -318,3 +318,9 @@ table.sheetjs>caption>table.hoverhead>thead>tr>th {
 	font-family: sans-serif;
 	background-color: #f8f5f4;
 }
+
+table th {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+}

@@ -72,10 +72,18 @@ table {
  }
  
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Added below jquery plugin for adding filter functinality to html table-->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="{% static '/css/jquery.sheetjs.css' %}" />
 <script src="{% static '/js/jquery.sheetjs.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/table_col_resize.css' %}" />
+<script src="{% static '/js/table_col_resize.js' %}"></script>
+<!-- <script src="{% static '/js/jQuery.resizableColumns.js' %}"></script> -->
+<!--script to resize html columns-->
+<!-- <script>
+  $('#dtBasicExample').resizableColumns();
+</script> -->
 </head>
 <body>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
