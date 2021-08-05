@@ -20,7 +20,7 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <I><a class="navbar-brand" href="#">SPHURTI WEB APP</a></I>
+  <I><a class="navbar-brand" href="#">Sphurti WebApp</a></I>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -28,16 +28,35 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-        <a class="nav-link" href="#">ONLINE DATA MANAGEMENT<span class="sr-only">(current)</span></a>
+    {% if user.is_authenticated and user.is_superuser %}
+        <a class="nav-link" href="dupload">Upload<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="csv">Download<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="Download">Download<span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="logout/">Logout<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="logout/">Welcome {{user.username}}<span class="sr-only">(current)</span></a>
+      </li>
+      {% else %}
+      <li class="nav-item active">
+        <a class="nav-link" href="logout/">Welcome {{user.username}}<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="logout/">Logout<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+      {%endif%}
       </ul>
       <!-- <input class="form-control mr-sm-2" disabled width="50px" type="search" placeholder="Selected Text" aria-label="sel_text" name="sel_text" id="sel_text"> -->
     <form method ="get" action="search"class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <li class="nav-item active">
+      <button type="button">Count</button>
+      </li>
        <!--<a href="csv" download>Click Here To Download The File</a>-->
     </form>
 </button>
@@ -101,11 +120,14 @@ table {
         <!--<th class="th-sm">Company_Name<form method ="get" action="search"class="form-inline my-2 my-lg-0"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></th></form>-->
         <th class="th-sm" title="Company_Name">Company_Name</th>    
         <th class="th-sm" title="Website">Website</th> 
+        <th class="th-sm" title="Employee_Size">Employee_Size</th>  
         <th class="th-sm" title="Employee_Range">Employee_Range</th>  
         <th class="th-sm" title="Industry">Industry</th>
         <th class="th-sm" title="Address_1">Address_1</th>
         <th class="th-sm" title="Address_2">Address_2</th>
+        <th class="th-sm" title="Address_3">Address_3</th>
         <th class="th-sm" title="City">City</th>
+        <th class="th-sm" title="State">State</th>
         <th class="th-sm" title="Zip_Code">Zip_Code</th>
         <th class="th-sm" title="Country">Country</th>
         <th class="th-sm" title="First_Name">First_Name</th>
@@ -113,25 +135,46 @@ table {
         <th class="th-sm" title="Job_Title">Job_Title</th>
         <th class="th-sm" title="LinkedIn_URL">LinkedIn_URL</th>
         <th class="th-sm" title="Public_Profile">Public_Profile</th>
+        <th class="th-sm" title="Prospect_City">Prospect_City</th>
+        <th class="th-sm" title="Prospect_State">Prospect_State</th>
+        <th class="th-sm" title="Prospect_Country">Prospect_Country</th>
         <th class="th-sm" title="Email_Id">Email_Id</th>
+        <th class="th-sm" title="Country_Code">Country_Code</th>
         <th class="th-sm" title="Contact_Num">Contact_Num</th>
+        <th class="th-sm" title="Direct_Num">Direct_Num</th>
+        <th class="th-sm" title="Business_Solution">Business_Solution</th>
+        <th class="th-sm" title="Revenue_Link">Revenue_Link</th>
+        <th class="th-sm" title="Revenue">Revenue</th>
+        <th class="th-sm" title="Company_Techology">Company_Techology</th>
+        <th class="th-sm" title="Additional_Information">Additional_Information</th>
+        <th class="th-sm" title="Company_Linkedin_URL">Company_Linkedin_URL</th>
+        <th class="th-sm" title="Company_Type">Company_Type</th>
+        <th class="th-sm" title="Company_Founded_Year">Company_Founded_Year</th>
         <th class="th-sm" title="Job_Url">Job_Url</th>
         <th class="th-sm" title="Job_Opening">Job_Opening</th>
-        <th class="th-sm" title="Actions">Actions</th>  
+        <th class="th-sm" title="Department">Department</th>
+        
+
+
+        
+        
     </tr>  
     </thead>  
     <tbody>
       
 {% for Data in Data %}  
     <tr>  
-        <td title="{{ cid }}">{{ cid }}</td>  
+        <td title="{{ Data.cid }}">{{ Data.cid }}</td>  
         <td title="{{ Data.Company_Name }}">{{ Data.Company_Name }}</td>  
         <td title="{{ Data.Website }}"><a href="{{ Data.Website }}" target="_blank">{{ Data.Website }}</a></td>  
+        <td title="{{ Data.Employee_size }}">{{ Data.Employee_size }}</td>
         <td title="{{ Data.Employee_Range }}">{{ Data.Employee_Range }}</td>
         <td title="{{ Data.Industry }}">{{ Data.Industry }}</td>
         <td title="{{ Data.Address_1 }}">{{ Data.Address_1 }}</td>
         <td title="{{ Data.Address_2 }}">{{ Data.Address_2 }}</td>
+        <td title="{{ Data.Address_3 }}">{{ Data.Address_3 }}</td>
         <td title="{{ Data.City }}">{{ Data.City }}</td>
+        <td title="{{ Data.State }}">{{ Data.State }}</td>
         <td title="{{ Data.Zip_Code }}">{{ Data.Zip_Code }}</td>
         <td title="{{ Data.Country }}">{{ Data.Country }}</td>
         <td title="{{ Data.First_Name }}">{{ Data.First_Name }}</td>
@@ -139,14 +182,25 @@ table {
         <td title="{{ Data.Job_Title }}">{{ Data.Job_Title }}</td>
         <td title="{{ Data.LinkedIn_URL }}">{{ Data.LinkedIn_URL }}</td>
         <td title="{{ Data.Public_Profile }}">{{ Data.Public_Profile }}</td>
+        <td title="{{ Data.Prospect_City }}">{{ Data.Prospect_City }}</td>
+        <td title="{{ Data.Prospect_State }}">{{ Data.Prospect_State }}</td>
+        <td title="{{ Data.Prospect_Country }}">{{ Data.Prospect_Country }}</td>
         <td title="{{ Data.Email_Id }}">{{ Data.Email_Id }}</td>
+        <td title="{{ Data.Country_Code }}">{{ Data.Country_Code }}</td>
         <td title="{{ Data.Contact_Num }}">{{ Data.Contact_Num }}</td>
+        <td title="{{ Data.Direct_Number }}">{{ Data.Direct_Number }}</td>
+        <td title="{{ Data.Business_Solution }}">{{ Data.Business_Solution }}</td>
+        <td title="{{ Data.Revenue_link }}"><a href="{{ Data.Revenue_link }}" target="_blank">{{ Data.Revenue_link }}</a></td>
+        <td title="{{ Data.Revenue }}">{{ Data.Revenue }}</td>
+        <td title="{{ Data.Company_Techology }}">{{ Data.Company_Techology }}</td>
+        <td title="{{ Data.Additional_information }}">{{ Data.Additional_information}}</td>
+        <td title="{{ Data.Company_Linkedin_URL }}"><a href="{{ Data.Company_Linkedin_URL }}" target="_blank">{{ Data.Company_Linkedin_URL }}</a></td>
+        <td title="{{ Data.Company_Type }}">{{ Data.Company_Type }}</td>
+        <td title="{{ Data.Company_Founded_Year }}">{{ Data.Company_Founded_Year }}</td>
         <td title="{{ Data.Job_Url }}"><a href="{{ Data.Job_Url }}" target="_blank">{{ Data.Job_Url }}</a></td>
         <td title="{{ Data.Job_Opening }}">{{ Data.Job_Opening }}</td>
-        <td>  
-            <a href="/edit/{{ Data.cid }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/delete/{{ Data.cid }}">Delete</a>  
-        </td>  
+        <td title="{{ Data.Department }}">{{ Data.Department }}</td>
+          
     </tr>  
 {% endfor %}  
     </tbody>  
@@ -154,5 +208,21 @@ table {
 <br>  
 <br>  
 <center><a href="/company" class="btn btn-primary">Add New Record</a></center>
+<br>
+<br>
+ 
+
+<!-- Script to Count number of rows in a table -->
+      <script>
+        $(document).ready(function(){
+          $("button").click(function(){
+              
+            // Select all the rows in the table
+            // and get the count of the selected elements
+            var rowCount = $("#dtBasicExample tr").length;
+            alert(rowCount); 
+          });
+        });
+      </script> 
 </body>
 </html>
